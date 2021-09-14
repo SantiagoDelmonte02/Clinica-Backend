@@ -18,13 +18,11 @@ public class PacienteController {
     @PostMapping("/registrar")
     public ResponseEntity<String> crear(@RequestBody Paciente paciente){
         ResponseEntity<String> respuesta = null;
-
         if(pacienteService.save(paciente) != null){
             respuesta = ResponseEntity.ok("El paciente fue registrado con éxito");
         }else{
             respuesta = ResponseEntity.internalServerError().body("Ooops! Hubo un error en el registro");
         }
-
         return respuesta;
     }
 
