@@ -1,10 +1,18 @@
-import './App.css';
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+import "./App.css";
+import Login from "./components/Login";
+import Register from "./components/Register";
+import Home from "./pages/Home";
 
 function App() {
   return (
-    <div className="App">
-      <h1>Hola mundo desde React con Spring!</h1>
-    </div>
+    <BrowserRouter>
+      <Switch>
+        <Route exact path="/"><Home /></Route>
+        <Route path="/login"><Login /></Route>
+        <Route path="/registrar"><Register /></Route>
+      </Switch>
+    </BrowserRouter>
   );
 }
 
