@@ -8,9 +8,6 @@ class Home extends Component {
         <h1>Bienvenidos a la clinica Digital House</h1>
         <ul>
           <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
             <Link to="/login">Login</Link>
           </li>
           <li>

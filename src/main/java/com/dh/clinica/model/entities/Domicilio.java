@@ -1,6 +1,5 @@
 package com.dh.clinica.model.entities;
 
-
 import javax.persistence.*;
 
 @Entity
@@ -62,4 +61,7 @@ public class Domicilio {
                 '}';
     }
 
+    public Integer getId() {
+        return this.id;
+    }
 }

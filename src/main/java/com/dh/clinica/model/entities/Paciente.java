@@ -23,6 +23,10 @@ public class Paciente {
     public Paciente() {
     }
 
+    public Integer getId() {
+        return id;
+    }
+
     public String getApellido() {
         return apellido;
     }

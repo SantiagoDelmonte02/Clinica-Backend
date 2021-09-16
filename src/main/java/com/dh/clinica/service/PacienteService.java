@@ -1,7 +1,7 @@
 package com.dh.clinica.service;
 
 import com.dh.clinica.model.entities.Paciente;
-import com.dh.clinica.model.impl.PacienteRepository;
+import com.dh.clinica.model.repository.PacienteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,19 +11,31 @@ import java.util.Optional;
 @Service
 public class PacienteService {
 
-    @Autowired
-    PacienteRepository repository;
+    private final PacienteRepository pacienteRepository;
 
-    public String save(Paciente paciente){
-        if(repository.save(paciente) != null){
-            return "OK";
-        }else{
-            return null;
-        }
+    @Autowired
+    public PacienteService(PacienteRepository pacienteRepository) {
+        this.pacienteRepository = pacienteRepository;
     }
 
-    public List<Paciente> obtenerTodos(){
-        return repository.findAll();
+    public Paciente guardar(Paciente p) {
+        return pacienteRepository.save(p);
+    }
+
+    public Optional<Paciente> buscar(Integer id) {
+        return pacienteRepository.findById(id);
+    }
+
+    public List<Paciente> buscarTodos() {
+        return pacienteRepository.findAll();
+    }
+
+    public void eliminar(Integer id) {
+        pacienteRepository.deleteById(id);
+    }
+
+    public Paciente actualizar(Paciente p) {
+        return pacienteRepository.save(p);
     }
 
 
