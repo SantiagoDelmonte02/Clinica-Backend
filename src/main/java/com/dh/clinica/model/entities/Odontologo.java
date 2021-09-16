@@ -1,16 +1,20 @@
 package com.dh.clinica.model.entities;
 
+import javax.persistence.*;
+
+@Entity
+@Table
 public class Odontologo {
 
+    @Id
+    @SequenceGenerator(name = "odontologo_sequence", sequenceName = "odontologo_sequence", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "odontologo_sequence")
     private Integer id;
-    private Integer matricula;
     private String nombre;
     private String apellido;
+    private Integer matricula;
 
-    public Odontologo(Integer matricula, String nombre, String apellido) {
-        this.matricula = matricula;
-        this.nombre = nombre;
-        this.apellido = apellido;
+    public Odontologo() {
     }
 
     public Integer getId() {
