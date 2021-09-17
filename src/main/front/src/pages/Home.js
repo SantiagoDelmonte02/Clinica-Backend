@@ -1,22 +1,48 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import Login from "../components/Login";
+import Administracion from "./Administracion"
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 class Home extends Component {
+
+  constructor (props) {
+    super(props);
+
+    this.state = {
+      auth: false
+    };
+
+  }
+
+  verificaUsuario = () => {  
+  
+    let datosLogin = {};
+    datosLogin.usuario = document.querySelector("#usuario").value;
+    datosLogin.password = document.querySelector("#password").value;
+    if (datosLogin.usuario === "admin" && datosLogin.password === "admin") {
+      alert("Inicio de sesion correcto!")
+      this.setState = { auth: true };
+      console.log(this.state.auth);
+    } else {
+      alert("Inicio de sesion incorrecto!, vuelva a ingresar sus datos.")
+      console.log(this.state.auth);
+    }
+  
+  }
+
   render() {
     return (
       <div>
-        <h1>Bienvenidos a la clinica Digital House</h1>
-        <ul>
-          <li>
-            <Link to="/administracion">Administracion</Link>
-          </li>
-          <li>
-            <Link to="/login">Login</Link>
-          </li>
-          <li>
-            <Link to="/registrar">Registrar</Link>
-          </li>
-        </ul>
+        <BrowserRouter>
+          <Switch> 
+            <Route path="/"><Login handleClick={this.verificaUsuario} /></Route>
+            { this.state.auth ? 
+                <Route path="/login"><Login handleClick={this.verificaUsuario} /></Route>
+              :   
+                <Route path="/administrador"><Administracion /></Route>
+            }
+          </Switch>
+        </BrowserRouter>
       </div>
     );
   }

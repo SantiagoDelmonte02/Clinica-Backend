@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+
+* {
+    margin: 0;
+}
+
+body {
+    font-family: 'Inter', serif;
+    background-color: #fff;
+}
+
+
+h1 {
+    font-size: 40px;
+    margin: 20px;
+    text-align: center;
+    color: #333333;
+    font-weight: bold;
+}
+
+h2 {
+    font-size: 30px;
+    margin: 20px;
+    text-align: center;
+    color: #333333;
+    font-weight: bold;
+}
+
+.login {
+    position: relative;
+    top: 20%;
+    margin: auto;
+    text-align: center;
+    width: 650px;
+}
+
+.login a {
+    color:  #00669f;
+    text-decoration: none;
+}
+
+.entrada {
+    width: 600px;
+    margin: 10px;
+}
+
+.menu {
+    width: 624px;
+    margin: 10px;
+    height: 45px;
+    font-size: 15px;
+    padding: 10px;
+    border: 2px solid #333333;
+}
+
+.entrar {
+    background-color: #2166cc;
+    border-radius: 20px;
+    width: 280px;
+    height: 45px;
+    margin: 20px;
+    border: 0;
+    color: #fff;
+}
+
+.resetear {
+    background-color: #888888;
+    color: #fff;
+    border-radius: 20px;
+    width: 280px;
+    height: 45px;
+    margin: 20px;
+    border: 0;
+}
+
+input[type=text], input[type=number], input[type=password] {
+    font-size: 15px;
+    padding: 10px;
+    border: 2px solid #333333;
+}
+
+input[type=button], input[type=reset] {
+    font-size: 15px;
+    font-weight: bold;
+}

@@ -1,18 +1,20 @@
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import "./App.css";
-import Administracion from "./components/Administracion";
-import Login from "./components/Login";
-import Register from "./components/Register";
+import Register from "./components/RegistrarOdontologo";
 import Home from "./pages/Home";
+import Navbar from "./components/Navbar";
+import Consultas from "./components/Consultas";
+import Administracion from "./pages/Administracion";
 
 function App() {
   return (
     <BrowserRouter>
-      <Switch>
+      <Navbar />
+      <Switch> 
         <Route exact path="/"><Home /></Route>
-        <Route path="/login"><Login /></Route>
         <Route path="/registrar"><Register /></Route>
-        <Route path="/administracion"><Administracion /></Route>
+        <Route path="/consultas"><Consultas /></Route>
+        <Route path="/administrador"><Administracion /></Route>
       </Switch>
     </BrowserRouter>
   );

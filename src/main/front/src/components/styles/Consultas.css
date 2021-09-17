@@ -1,0 +1,31 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+
+
+.table-container {
+    display: flex;
+    width: 20%;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: rgb(62, 111, 201);
+    border-radius: 15px;
+    margin: 40px auto;
+    padding: 10px 15px;
+}
+
+.table-bordered {
+    margin: 40px auto;
+    padding: 10px 15px;
+    width: 40%;
+    background-color: rgb(205, 214, 231);
+    border-radius: 5px;
+}
+
+.table-bordered thead {
+    background-color: rgb(98, 120, 165);
+}
