@@ -7,4 +7,4 @@ Proyecto Integrador Backend I en Java
 - Patrones MVC / Dao
 - SQL / H2
 - Consumo de API con JS
-- JUnit
+- React / Bootstrap
