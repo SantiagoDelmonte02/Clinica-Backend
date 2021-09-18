@@ -22,6 +22,28 @@ class Register extends Component {
     
                     </form>
                 </div>
+
+                
+                {/* <div class="modal fade" id="delete-modal">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            
+                            <div class="modal-header">
+                                <h4 class="modal-title">Eliminada!</h4>
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            </div>
+                            
+                            <div class="modal-body">
+                            </div>
+                            
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                <button type="button" class="btn btn-danger" id="model-delete-btn">Eliminar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div> */}
+
             </div>
         );
     }

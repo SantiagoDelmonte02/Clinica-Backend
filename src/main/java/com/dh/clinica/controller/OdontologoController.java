@@ -18,15 +18,12 @@ public class OdontologoController {
 
     @PostMapping()
     public ResponseEntity<Odontologo> registrarOdontologo(@RequestBody Odontologo odontologo) {
-
         return ResponseEntity.ok(odontologoService.registrarOdontologo(odontologo));
-
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<Odontologo> buscar(@PathVariable Integer id) {
         Odontologo odontologo = odontologoService.buscar(id).orElse(null);
-
         return ResponseEntity.ok(odontologo);
     }
 
@@ -45,7 +42,6 @@ public class OdontologoController {
     @DeleteMapping("/{id}")
     public ResponseEntity<String> eliminar(@PathVariable Integer id) {
         ResponseEntity<String> response = null;
-
         if (odontologoService.buscar(id).isPresent()) {
             odontologoService.eliminar(id);
             response = ResponseEntity.status(HttpStatus.NO_CONTENT).body("Eliminado");

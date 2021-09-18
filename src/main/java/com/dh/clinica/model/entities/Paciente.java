@@ -16,11 +16,19 @@ public class Paciente {
     private String dni;
     private Date fechaIngreso;
 
-    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "domicilio_id")
     private Domicilio domicilio;
 
     public Paciente() {
+    }
+
+    public Paciente(String nombre, String apellido, String dni, Date fechaIngreso, Domicilio domicilio) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.dni = dni;
+        this.fechaIngreso = fechaIngreso;
+        this.domicilio = domicilio;
     }
 
     public Integer getId() {

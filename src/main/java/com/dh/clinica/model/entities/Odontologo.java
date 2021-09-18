@@ -17,6 +17,12 @@ public class Odontologo {
     public Odontologo() {
     }
 
+    public Odontologo(String nombre, String apellido, Integer matricula) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.matricula = matricula;
+    }
+
     public Integer getId() {
         return id;
     }
@@ -51,7 +57,7 @@ public class Odontologo {
 
     @Override
     public String toString() {
-        return "Odontologo: " + " matricula = " + matricula + ", nombre = " + nombre  + ", apellido = " + apellido;
+        return "Odontologo: Id: "+ id + " matricula = " + matricula + ", nombre = " + nombre  + ", apellido = " + apellido;
     }
 
 }
