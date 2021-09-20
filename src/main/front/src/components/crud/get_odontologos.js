@@ -1,3 +1,5 @@
+import { eliminar } from './delete_odontologo'
+
 async function cargarOdontologos() {
     const request = await fetch("/odontologos", {
       method: "GET",
@@ -18,7 +20,7 @@ async function cargarOdontologos() {
                       <td>${odontologo.nombre} </td>
                       <td>${odontologo.apellido}</td>
                       <td>${odontologo.matricula}</td>
-                      <td></td>
+                      <td><button class="btn btn-danger" onclick="alert('Eliminado')">Eliminar</button> <button class="btn btn-info" onclick="alert('Editado')" >Editar</button></td>
                   </tr>`;
                   
       listadoHtml += user;

@@ -21,7 +21,8 @@ class ConsultaPacientes extends Component {
               <th scope="col">Nombre</th>
               <th scope="col">Apellido</th>
               <th scope="col">DNI</th>
-              <th scope="col">Fecha</th>
+              <th scope="col">Fecha Ingreso</th>
+              <th scope="col">Acciones</th>
             </tr>
           </thead>
           <tbody>

@@ -8,7 +8,7 @@ function eliminar() {
     //     }
     //   });
 
-    console.log("eliminado")
+    alert("Eliminado!!")
 }
 
 export { eliminar }

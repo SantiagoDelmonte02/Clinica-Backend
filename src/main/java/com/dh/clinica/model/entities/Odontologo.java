@@ -1,5 +1,8 @@
 package com.dh.clinica.model.entities;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 
 @Entity
@@ -9,9 +12,13 @@ public class Odontologo {
     @Id
     @SequenceGenerator(name = "odontologo_sequence", sequenceName = "odontologo_sequence", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "odontologo_sequence")
+    @Getter
     private Integer id;
+    @Getter @Setter
     private String nombre;
+    @Getter @Setter
     private String apellido;
+    @Getter @Setter
     private Integer matricula;
 
     public Odontologo() {
@@ -21,38 +28,6 @@ public class Odontologo {
         this.nombre = nombre;
         this.apellido = apellido;
         this.matricula = matricula;
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public Integer getMatricula() {
-        return matricula;
-    }
-
-    public void setMatricula(Integer matricula) {
-        this.matricula = matricula;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public String getApellido() {
-        return apellido;
-    }
-
-    public void setApellido(String apellido) {
-        this.apellido = apellido;
     }
 
     @Override
