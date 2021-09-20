@@ -1,4 +1,4 @@
-function eliminar(id) {
+function eliminar() {
 
     // const request = await fetch('/odontologos/' + id, {
     //     method: 'DELETE',
@@ -8,7 +8,7 @@ function eliminar(id) {
     //     }
     //   });
 
-    console.log(id)
+    console.log("eliminado")
 }
 
 export { eliminar }

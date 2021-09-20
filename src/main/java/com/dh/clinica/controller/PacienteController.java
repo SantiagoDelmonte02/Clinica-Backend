@@ -18,9 +18,7 @@ public class PacienteController {
 
     @PostMapping()
     public ResponseEntity<Paciente> registrarPaciente(@RequestBody Paciente paciente) {
-
         return ResponseEntity.ok(pacienteService.guardar(paciente));
-
     }
 
     @GetMapping("/{id}")
@@ -56,6 +54,9 @@ public class PacienteController {
         return response;
     }
 
-
+    @GetMapping()
+    public ResponseEntity<List<Paciente>> buscarTodos() {
+        return ResponseEntity.ok(pacienteService.buscarTodos());
+    }
 
 }

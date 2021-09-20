@@ -1,50 +1,35 @@
 import React, { Component } from 'react';
+import { registrar } from './crud/post_paciente';
 import './styles/Register.css'
 
 class Register extends Component {
 
-    render() {
-        async function registrarUsuario() {
-            let datos = {};
-            datos.nombre = document.getElementById("nombre").value;
-            datos.apellido = document.getElementById("apellido").value;
-            datos.matricula = document.getElementById("matricula").value;
+	render() {
 
-          const request = await fetch('/pacientes', {
-            method: 'POST',
-            headers: {
-              'Accept': 'application/json',
-              'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(datos)
-          });
-        
-          const usuarios = await request.json();
-          console.log(usuarios);
-        
-        }
+		return (
+			<div>
 
-        return (
-            <div>
-                
-                <div class="login">
-                    <form>
-                        <h2>Registrar Paciente</h2>
-                
-                        <input class="entrada" id="nombre" type="text" name="nombre" placeholder="Nombre"/>
-                        <input class="entrada" id="apellido" type="text" name="apellido" placeholder="Apellido"/>
+				<div class="login">
+					<form>
+						<h2>Registrar Paciente</h2>
 
-                        <input class="resetear" type="reset" value="Reiniciar"/>
-                        <input onClick={registrarUsuario} class="entrar" type="submit" value="Registrar"/>
-                         
-    
-                    </form>
-                </div>
+						<input class="entrada" id="nombrePaciente" type="text" name="nombre" placeholder="Nombre" />
+						<input class="entrada" id="apellidoPaciente" type="text" name="apellido" placeholder="Apellido" />
+						<input class="entrada" id="dniPaciente" type="text" name="dni" placeholder="Dni" />
+						{/* <input class="entrada" id="fechaIngreso" type="date" name="fechaIngreso" placeholder="Fecha ingreso" />
+						<input class="entrada" id="domicilio" type="date" name="domicilio" placeholder="Fecha ingreso" /> */}
+
+						<input class="resetear" type="reset" value="Reiniciar" />
+						<input onClick={registrar} class="entrar" type="button" value="Registrar" />
 
 
-            </div>
-        );
-    }
+					</form>
+				</div>
+
+
+			</div>
+		);
+	}
 }
 
 export default Register;

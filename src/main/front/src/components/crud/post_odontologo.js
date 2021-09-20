@@ -1,3 +1,5 @@
+import { cargarOdontologos } from './get_odontologos';
+
 async function registrar() {
     let datos = {};
     datos.nombre = document.getElementById("nombre").value;
@@ -12,7 +14,7 @@ async function registrar() {
     },
     body: JSON.stringify(datos)
   });
-
+  cargarOdontologos();
   const usuarios = await request.json();
   console.log(usuarios);
 }

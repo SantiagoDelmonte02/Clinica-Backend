@@ -3,10 +3,14 @@ import "./styles/Consultas.css";
 
 import { cargarOdontologos } from './crud/get_odontologos';
 
-class Consultas extends Component {
+class ConsultaOdontologos extends Component {
+
+  // manejar consultas con array interno en constructor para renderizar con odontologos.map()
+
   componentDidMount() {
     cargarOdontologos();
   }
+
   render() {
     return (
       <div>
@@ -17,17 +21,11 @@ class Consultas extends Component {
               <th scope="col">Nombre</th>
               <th scope="col">Apellido</th>
               <th scope="col">Matricula</th>
-              <th scope="col"></th>
+              <th scope="col">Acciones</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-                {/* <td>1</td>
-                <td>Juan</td>
-                <td>Perez</td>
-                <td>1234</td>
-                <td><button onclick={eliminar(12)} class="btn btn-danger btn_delete" id="btnEliminar">x</button></td> */}
-            </tr>
+            
           </tbody>
         </table>
       </div>
@@ -35,4 +33,4 @@ class Consultas extends Component {
   }
 }
 
-export default Consultas;
+export default ConsultaOdontologos;
