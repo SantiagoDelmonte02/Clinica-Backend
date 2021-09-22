@@ -1,14 +1,29 @@
 import React, { Component } from "react";
 import "./styles/Consultas.css";
 
-import { cargarOdontologos } from './crud/get_odontologos';
-
 class ConsultaOdontologos extends Component {
 
-  // manejar consultas con array interno en constructor para renderizar con odontologos.map()
+  constructor(props) {
+    super(props);
+    this.state = {
+      arrOdontologos : []
+    }
+  }
+
+  cargarOdontologos = () => {
+    fetch("/odontologos")
+    .then((response) => response.json())
+    .then((data) => {
+      this.setState({ arrOdontologos: data })
+    })
+  }
 
   componentDidMount() {
-    cargarOdontologos();
+    this.cargarOdontologos();
+  }
+
+  eliminar = (evt) => {
+    console.log("Eliminando odontologo con id: " + evt.target.id);
   }
 
   render() {
@@ -25,7 +40,17 @@ class ConsultaOdontologos extends Component {
             </tr>
           </thead>
           <tbody>
-            
+              {this.state.arrOdontologos.map((odontologo, i) => {
+                return (
+                  <tr>
+                    <td>{odontologo.id}</td>
+                    <td>{odontologo.nombre} </td>
+                    <td>{odontologo.apellido}</td>
+                    <td>{odontologo.matricula}</td>
+                    <td style={{width: "25%"}}><button id={odontologo.id} class="btn btn-danger" onClick={this.eliminar}>Eliminar</button> <button class="btn btn-info" >Editar</button></td>
+                </tr>
+                )
+              })}
           </tbody>
         </table>
       </div>

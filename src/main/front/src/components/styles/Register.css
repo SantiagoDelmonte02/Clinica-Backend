@@ -63,6 +63,10 @@ h2 {
     color: #fff;
 }
 
+.entrar:hover {
+    background-color: #1d519e;
+}
+
 .resetear {
     background-color: #888888;
     color: #fff;
@@ -71,6 +75,10 @@ h2 {
     height: 45px;
     margin: 20px;
     border: 0;
+}
+
+.resetear:hover {
+    background-color: #797979;
 }
 
 input[type=text], input[type=number], input[type=password] {
@@ -82,4 +90,6 @@ input[type=text], input[type=number], input[type=password] {
 input[type=button], input[type=reset] {
     font-size: 15px;
     font-weight: bold;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
 }
+

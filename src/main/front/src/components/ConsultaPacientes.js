@@ -1,17 +1,35 @@
 import React, { Component } from "react";
 import "./styles/Consultas.css";
 
-import { cargarPacientes } from './crud/get_pacientes'
-
 class ConsultaPacientes extends Component {
 
-  // manejar consultas con array interno en constructor para renderizar con pacientes.map()
+  constructor(props) {
+    super(props);
+    this.state = {
+      arrPacientes : []
+    }
+  }
+
+  cargarPacientes = () => {
+    fetch("/pacientes")
+    .then((response) => response.json())
+    .then((data) => {
+      this.setState({ arrPacientes: data })
+    })
+  }
 
   componentDidMount() {
-    cargarPacientes();
+    this.cargarPacientes();
+  }
+
+  eliminar = (evt) => {
+    console.log("Eliminando paciente con id: " + evt.target.id);
   }
 
   render() {
+    var today = new Date();
+    var date = today.getDate()+'-'+(today.getMonth()+1)+'-'+today.getFullYear();
+
     return (
       <div>
         <table class="table table-bordered" id="pacientes">
@@ -26,7 +44,18 @@ class ConsultaPacientes extends Component {
             </tr>
           </thead>
           <tbody>
-            
+              {this.state.arrPacientes.map((paciente, i) => {
+                return (
+                  <tr>
+                    <td>{paciente.id}</td>
+                    <td>{paciente.nombre} </td>
+                    <td>{paciente.apellido}</td>
+                    <td>{paciente.dni}</td>
+                    <td>{date}</td>
+                    <td style={{width: "25%"}}><button id={paciente.id} class="btn btn-danger" onClick={this.eliminar}>Eliminar</button> <button class="btn btn-info" >Editar</button></td>
+                </tr>
+                )
+              })}
           </tbody>
         </table>
       </div>
