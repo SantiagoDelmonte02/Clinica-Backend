@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./styles/Consultas.css";
+//import swal from 'sweetalert';
 
 class ConsultaPacientes extends Component {
 
