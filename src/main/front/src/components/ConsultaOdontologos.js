@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./styles/Consultas.css";
+//import swal from 'sweetalert';
 
 class ConsultaOdontologos extends Component {
 
@@ -11,19 +12,33 @@ class ConsultaOdontologos extends Component {
   }
 
   cargarOdontologos = () => {
+    console.log("Buscando todos los odontologos...");
     fetch("/odontologos")
     .then((response) => response.json())
     .then((data) => {
       this.setState({ arrOdontologos: data })
     })
+    console.log("Array de odontologos: " + this.state.arrOdontologos);
   }
 
   componentDidMount() {
     this.cargarOdontologos();
   }
 
-  eliminar = (evt) => {
-    console.log("Eliminando odontologo con id: " + evt.target.id);
+  eliminarOdontologo = (evt) => {
+    if(window.confirm("Seguro que desea eliminar el odontologo con id: " + evt.target.id + "?")) {
+      fetch("/odontologos/" + evt.target.id, {
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        method: "DELETE"
+      })
+      alert("Odontologo eliminado!");
+      this.cargarOdontologos();
+    } else {
+      alert("Operacion cancelada!")
+    }
   }
 
   render() {
@@ -47,7 +62,7 @@ class ConsultaOdontologos extends Component {
                     <td>{odontologo.nombre} </td>
                     <td>{odontologo.apellido}</td>
                     <td>{odontologo.matricula}</td>
-                    <td style={{width: "25%"}}><button id={odontologo.id} class="btn btn-danger" onClick={this.eliminar}>Eliminar</button> <button class="btn btn-info" >Editar</button></td>
+                    <td style={{width: "25%"}}><button id={odontologo.id} class="btn btn-danger" onClick={this.eliminarOdontologo}>Eliminar</button> <button class="btn btn-info" >Editar</button></td>
                 </tr>
                 )
               })}

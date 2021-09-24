@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./styles/Consultas.css";
+import swal from 'sweetalert';
 
 class ConsultaPacientes extends Component {
 
@@ -22,8 +23,20 @@ class ConsultaPacientes extends Component {
     this.cargarPacientes();
   }
 
-  eliminar = (evt) => {
-    console.log("Eliminando paciente con id: " + evt.target.id);
+  eliminarPaciente = (evt) => {
+    if(window.confirm("Seguro que desea eliminar el paciente con id: " + evt.target.id + "?")) {
+      fetch("/pacientes/" + evt.target.id, {
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        method: "DELETE"
+      })
+      alert("Paciente eliminado!");
+      this.cargarPacientes();
+    } else {
+      alert("Operacion cancelada!")
+    }
   }
 
   render() {
@@ -52,7 +65,7 @@ class ConsultaPacientes extends Component {
                     <td>{paciente.apellido}</td>
                     <td>{paciente.dni}</td>
                     <td>{date}</td>
-                    <td style={{width: "25%"}}><button id={paciente.id} class="btn btn-danger" onClick={this.eliminar}>Eliminar</button> <button class="btn btn-info" >Editar</button></td>
+                    <td style={{width: "25%"}}><button id={paciente.id} class="btn btn-danger" onClick={this.eliminarPaciente}>Eliminar</button> <button class="btn btn-info" >Editar</button></td>
                 </tr>
                 )
               })}

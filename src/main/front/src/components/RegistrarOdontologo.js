@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './styles/Register.css'
+import swal from 'sweetalert';
 
 class Register extends Component {
 
@@ -20,7 +21,11 @@ class Register extends Component {
 		}).then(function(res){ 
 				console.log(res) 
 			})
-			alert("Odontologo agregado!")
+		swal("Felicitaciones!", "El odontologo ha sido agregado", "success");
+		
+		document.getElementById("nombre").value = "";
+		document.getElementById("apellido").value = "";
+		document.getElementById("matricula").value = "";
 	}
 
 	render() {
