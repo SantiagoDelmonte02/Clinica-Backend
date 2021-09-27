@@ -1,31 +1,53 @@
 import React, { Component } from 'react';
 import './styles/Register.css'
-
-import { registrar } from './crud/post_odontologo'
+import swal from 'sweetalert';
 
 class Register extends Component {
 
-    render() {
+	handleRegistro = () => {
 
-        return (
-            <div>
-                <div class="login">
-                    <form>
-                        <h2>Registrar Odontologo</h2>
-                
-                        <input class="entrada" id="nombre" type="text" name="nombre" placeholder="Nombre"/>
-                        <input class="entrada" id="apellido" type="text" name="apellido" placeholder="Apellido"/>
-                        <input class="entrada" id="matricula" type="number" name="matricula" placeholder="Matricula"/>
+		let datos = {};
+		datos.nombre = document.getElementById("nombre").value;
+		datos.apellido = document.getElementById("apellido").value;
+		datos.matricula = document.getElementById("matricula").value;
 
-                        <input class="resetear" type="reset" value="Reiniciar"/>
-                        <input onClick={registrar} class="entrar" type="button" value="Registrar"/>   
-    
-                    </form>
-                </div>
+		fetch("/odontologos", {
+				headers: {
+					'Accept': 'application/json',
+					'Content-Type': 'application/json'
+				},
+				method: "POST",
+				body: JSON.stringify(datos)
+		})
+		swal("Felicitaciones!", "El odontologo ha sido agregado", "success");
+		
+		document.getElementById("nombre").value = "";
+		document.getElementById("apellido").value = "";
+		document.getElementById("matricula").value = "";
+	}
 
-            </div>
-        );
-    }
+	render() {
+
+		return (
+			<div>
+				<div class="login">
+					<form>
+						<h1>Registrar Odontologo</h1>
+						<h2><i>Datos del odontologo</i></h2>
+
+						<input class="entrada" id="nombre" type="text" name="nombre" placeholder="Nombre" />
+						<input class="entrada" id="apellido" type="text" name="apellido" placeholder="Apellido" />
+						<input class="entrada" id="matricula" type="number" name="matricula" placeholder="Matricula" />
+
+						<input class="resetear" type="reset" value="Reiniciar" />
+						<input onClick={this.handleRegistro} class="entrar" type="button" value="Registrar" />
+
+					</form>
+				</div>
+
+			</div>
+		);
+	}
 }
 
 export default Register;

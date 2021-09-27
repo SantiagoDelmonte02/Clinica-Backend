@@ -39,6 +39,19 @@ h2 {
     text-decoration: none;
 }
 
+.form_update {
+    display: none;
+    position: relative;
+    top: 20%;
+    margin: auto;
+    text-align: right;
+    width: 300px;
+}
+
+.form_update .entrada {
+    width: 250px;
+}
+
 .entrada {
     width: 600px;
     margin: 10px;
@@ -56,24 +69,32 @@ h2 {
 .entrar {
     background-color: #2166cc;
     border-radius: 20px;
-    width: 280px;
+    width: 250px;
     height: 45px;
     margin: 20px;
     border: 0;
     color: #fff;
+}
+
+.entrar:hover {
+    background-color: #1d519e;
 }
 
 .resetear {
     background-color: #888888;
     color: #fff;
     border-radius: 20px;
-    width: 280px;
+    width: 250px;
     height: 45px;
     margin: 20px;
     border: 0;
 }
 
-input[type=text], input[type=number], input[type=password] {
+.resetear:hover {
+    background-color: #797979;
+}
+
+input[type=text], input[type=number], input[type=password], input[type=date] {
     font-size: 15px;
     padding: 10px;
     border: 2px solid #333333;
@@ -82,4 +103,6 @@ input[type=text], input[type=number], input[type=password] {
 input[type=button], input[type=reset] {
     font-size: 15px;
     font-weight: bold;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
 }
+
