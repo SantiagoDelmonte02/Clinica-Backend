@@ -18,9 +18,7 @@ class Register extends Component {
 				},
 				method: "POST",
 				body: JSON.stringify(datos)
-		}).then(function(res){ 
-				console.log(res) 
-			})
+		})
 		swal("Felicitaciones!", "El odontologo ha sido agregado", "success");
 		
 		document.getElementById("nombre").value = "";
@@ -34,7 +32,8 @@ class Register extends Component {
 			<div>
 				<div class="login">
 					<form>
-						<h2>Registrar Odontologo</h2>
+						<h1>Registrar Odontologo</h1>
+						<h2><i>Datos del odontologo</i></h2>
 
 						<input class="entrada" id="nombre" type="text" name="nombre" placeholder="Nombre" />
 						<input class="entrada" id="apellido" type="text" name="apellido" placeholder="Apellido" />

@@ -7,13 +7,12 @@ class Administracion extends Component {
     render() {
         return (
             <div>
-                <h1>Registracion de Odontologos</h1>
+                <h1>Bienvenido al panel de administrador</h1>
+                <hr/>
                 <RegistrarOdontologo />
                 <hr/>
-                <h1>Registracion de Pacientes</h1>
                 <RegistrarPaciente />
                 <hr/>
-                
             </div>
         );
     }
