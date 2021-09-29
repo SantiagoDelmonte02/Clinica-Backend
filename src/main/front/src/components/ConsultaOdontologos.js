@@ -12,7 +12,6 @@ class ConsultaOdontologos extends Component {
   }
 
   cargarOdontologos = () => {
-    console.log("Buscando todos los odontologos...");
     fetch("/odontologos")
     .then((response) => response.json())
     .then((data) => {

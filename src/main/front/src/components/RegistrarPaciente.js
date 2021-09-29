@@ -50,7 +50,7 @@ class Register extends Component {
 						<input class="entrada" id="nombrePaciente" type="text" name="nombre" placeholder="Nombre" />
 						<input class="entrada" id="apellidoPaciente" type="text" name="apellido" placeholder="Apellido" />
 						<input class="entrada" id="dniPaciente" type="text" name="dni" placeholder="Dni" />
-						<input class="entrada" id="fechaIngreso" type="date" name="fechaIngreso" placeholder="Fecha ingreso" />
+						<input class="entrada" id="fechaIngreso" type="datetime-local" name="fechaIngreso" placeholder="Fecha ingreso" />
 						<h3 style={{ padding: "15px 5px" }}>Datos del domicilio</h3>
 						<div style={{ margin: "auto", width: "625px", display: "flex" }}>
 							<input class="entrada" id="calle" type="text" name="calle" placeholder="Calle" />
