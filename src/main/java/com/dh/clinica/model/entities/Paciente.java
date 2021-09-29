@@ -1,10 +1,13 @@
 package com.dh.clinica.model.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table
@@ -28,6 +31,11 @@ public class Paciente {
     @JoinColumn(name = "domicilio_id")
     @Getter @Setter
     private Domicilio domicilio;
+
+    @OneToMany(mappedBy = "paciente", fetch = FetchType.LAZY)
+    @Getter @Setter
+    @JsonIgnore
+    private Set<Turno> turnos = new HashSet<>();
 
     public Paciente() {
     }

@@ -33,16 +33,22 @@ public class OdontologoController {
         return ResponseEntity.ok(odontologo);
     }
 
-    @PutMapping()
-    public ResponseEntity<Odontologo> actualizar(@RequestBody Odontologo odontologo) {
+    @PutMapping("/{id}")
+    public ResponseEntity<Odontologo> actualizar(@PathVariable Integer id, @RequestBody Odontologo odontologoActualizado) {
         ResponseEntity<Odontologo> response = null;
         logger.debug("Actualizando datos de odontologo...");
-        if (odontologo.getId() != null && odontologoService.buscar(odontologo.getId()).isPresent()) {
-            response = ResponseEntity.ok(odontologoService.actualizar(odontologo));
+
+        Odontologo odontologoViejo = odontologoService.buscar(id).orElse(null);
+        logger.debug(odontologoViejo);
+        if (odontologoService.buscar(odontologoViejo.getId()).isPresent()) {
+            odontologoViejo.setNombre(odontologoActualizado.getNombre());
+            odontologoViejo.setApellido(odontologoActualizado.getApellido());
+            odontologoViejo.setMatricula(odontologoActualizado.getMatricula());
+            response = ResponseEntity.ok(odontologoService.actualizar(odontologoViejo));
             logger.debug("Los datos del odontologo han sido actualizados!");
         } else {
             response = ResponseEntity.status(HttpStatus.NOT_FOUND).build();
-            logger.error("Hubo un error en la actualizacion del paciente.");
+            logger.error("Hubo un error en la actualizacion del odontologo.");
         }
 
 

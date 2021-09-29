@@ -13,6 +13,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.MethodSorters;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.Date;
@@ -36,8 +37,8 @@ class PacienteServiceTest {
         Paciente paciente2 = pacienteService.guardar(new Paciente("Pablo", "Gomez", "28874312", new Date(), domicilio2));
         logger.info(paciente1);
         logger.info(paciente2);
-        Assert.assertTrue(paciente1.getId() != null);
-        Assert.assertTrue(paciente2.getId() != null);
+        Assert.assertNotNull(paciente1.getId());
+        Assert.assertNotNull(paciente2.getId());
     }
 
     @Test

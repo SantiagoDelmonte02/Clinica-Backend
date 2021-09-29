@@ -14,14 +14,9 @@ public class OdontologoService {
     private final OdontologoRepository odontologoRepository;
 
     @Autowired
-    public OdontologoService(OdontologoRepository odontologoRepository) {
-        this.odontologoRepository = odontologoRepository;
-    }
+    public OdontologoService(OdontologoRepository odontologoRepository) { this.odontologoRepository = odontologoRepository; }
 
-    public Odontologo registrarOdontologo(Odontologo odontologo) {
-        return odontologoRepository.save(odontologo);
-
-    }
+    public Odontologo registrarOdontologo(Odontologo odontologo) { return odontologoRepository.save(odontologo);}
 
     public void eliminar(Integer id) {
         odontologoRepository.deleteById(id);

@@ -1,6 +1,8 @@
 package com.dh.clinica.model.entities;
 
 import javax.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
 @Table
@@ -9,10 +11,15 @@ public class Domicilio {
     @Id
     @SequenceGenerator(name = "domicilio_sequence", sequenceName = "domicilio_sequence", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "domicilio_sequence")
+    @Getter
     private Integer id;
+    @Getter @Setter
     private String calle;
+    @Getter @Setter
     private String numero;
+    @Getter @Setter
     private String localidad;
+    @Getter @Setter
     private String provincia;
 
     public Domicilio() {
@@ -25,38 +32,6 @@ public class Domicilio {
         this.provincia = provincia;
     }
 
-    public String getCalle() {
-        return calle;
-    }
-
-    public void setCalle(String calle) {
-        this.calle = calle;
-    }
-
-    public String getNumero() {
-        return numero;
-    }
-
-    public void setNumero(String numero) {
-        this.numero = numero;
-    }
-
-    public String getLocalidad() {
-        return localidad;
-    }
-
-    public void setLocalidad(String localidad) {
-        this.localidad = localidad;
-    }
-
-    public String getProvincia() {
-        return provincia;
-    }
-
-    public void setProvincia(String provincia) {
-        this.provincia = provincia;
-    }
-
     @Override
     public String toString() {
         return "Domicilio{" +
@@ -66,9 +41,5 @@ public class Domicilio {
                 ", localidad='" + localidad + '\'' +
                 ", provincia='" + provincia + '\'' +
                 '}';
-    }
-
-    public Integer getId() {
-        return this.id;
     }
 }
