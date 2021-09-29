@@ -137,12 +137,11 @@ class ConsultaPacientes extends Component {
                           <input class="entrada" id={"nombre_paciente_" + paciente.id} type="text" name="nombre" placeholder={paciente.nombre} />
                           <input class="entrada" id={"apellido_paciente_" + paciente.id} type="text" name="apellido" placeholder={paciente.apellido} />
                           <input class="entrada" id={"dni_" + paciente.id} type="number" name="matricula" placeholder={paciente.dni} />
-                          <input class="entrada" id={"fechaIngreso_" + paciente.id} type="date" name="fechaIngreso" placeholder={paciente.fechaIngreso} />
+                          <input class="entrada" id={"fechaIngreso_" + paciente.id} type="datetime-local" name="fechaIngreso" placeholder={paciente.fechaIngreso} />
                           <input class="entrada" id={"calle_" + paciente.id} type="text" name="calle" placeholder={paciente.domicilio.calle} />
                           <input class="entrada" id={"numero_" + paciente.id} type="text" name="numero" placeholder={paciente.domicilio.numero} />
                           <input class="entrada" id={"localidad_" + paciente.id} type="text" name="localidad" placeholder={paciente.domicilio.localidad} />
                           <input class="entrada" id={"provincia_" + paciente.id} type="text" name="provincia" placeholder={paciente.domicilio.provincia} />
-
 
                           <input class="resetear" type="reset" value="Reiniciar" />
                           <input id={paciente.id} onClick={this.editarPaciente} class="entrar" type="button" value="Confirmar" />
