@@ -81,13 +81,6 @@ class TurnoServiceTest {
         Assert.assertTrue(turnoService.buscar(1).isPresent());
     }
 
-//    @Test
-//    void eliminar() {
-//    }
-//
-//    @Test
-//    void actualizar() {
-//    }
-//
+
 
 }

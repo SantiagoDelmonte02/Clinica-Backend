@@ -20,7 +20,7 @@ class NavbarAdmin extends Component {
                     <Link className="nav-link" to="/turnos">Turnos</Link>
                 </li>                      
                 <li className="nav-item">
-                    <Link to="/login"><button style={{position: "absolute", right: "1%"}} onClick={this.props.onLogout} class="btn btn-danger">Logout</button></Link>
+                    <Link to="/login?logout"><button style={{position: "absolute", right: "1%"}} onClick={this.props.onLogout} class="btn btn-danger">Logout</button></Link>
                 </li>
               </ul>
             </div>

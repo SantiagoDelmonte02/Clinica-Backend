@@ -1,6 +1,5 @@
 import React from "react";
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
-import PrivateRoute from "./components/PrivateRoute";
 import "./App.css";
 import Login from "./pages/Login";
 import Navbar from "./components/Navbar";
@@ -9,7 +8,6 @@ import ConsultasGenerales from "./components/ConsultasGenerales";
 import Turnos from "./components/Turnos";
 import NavbarAdmin from "./components/NavbarAdmin";
 import Footer from "./components/Footer";
-import NavbarLogin from "./components/NavbarLogin";
 
 
 class App extends React.Component {
@@ -18,10 +16,11 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      isLogged : false,
-      isAdmin : false
+      isLogged : true,
+      isAdmin : true
     }
   }
+
 
   handleLogin = () => {
     if (this.state.isLogged) {
@@ -29,7 +28,6 @@ class App extends React.Component {
     } else {
       this.setState({ isLogged: true });
     }
-    this.handleUser();
   }
 
   handleUser = () => {
@@ -45,8 +43,16 @@ class App extends React.Component {
       return <NavbarAdmin onLogout={this.handleLogin} />
     } else if (logged && !admin) {
       return <Navbar onLogout={this.handleLogin} />
+    }
+  }
+
+  handleHome = (logged, admin) => {
+    if (logged && admin) {
+      return <Redirect to="/administracion"/>
+    } else if (logged && !admin) {
+      return <Redirect to="/turnos"/>
     } else {
-      return <NavbarLogin />
+      window.location.href = "/login"
     }
   }
 
@@ -56,26 +62,11 @@ class App extends React.Component {
         {this.handleNavbar(this.state.isLogged, this.state.isAdmin)}
         <Switch> 
           <Route exact path="/">
-            {!this.state.isLogged && <Login isLogged={this.state.isLogged} onLogin={this.handleLogin} />}
+            {this.handleHome(this.state.isLogged, this.state.isAdmin)}
           </Route>
-          <Route path="/login"><Login isLogged={this.state.isLogged} onLogin={this.handleLogin} /></Route>
           <Route path="/administracion"><Administracion /></Route>
           <Route path="/consultas"><ConsultasGenerales /></Route>
           <Route path="/turnos"><Turnos /></Route>
-          <PrivateRoute
-              path="/administracion"
-              isAuthenticated={this.state.isAdmin}
-              redirectTo="/login"
-            >
-              <Administracion />
-          </PrivateRoute>
-          <PrivateRoute
-              path="/turnos"
-              isAuthenticated={!this.state.isAdmin}
-              redirectTo="/login"
-            >
-              <Turnos />
-          </PrivateRoute>
         </Switch>
         <Footer />
       </BrowserRouter>

@@ -8,14 +8,14 @@ class Login extends Component {
 		datos.usuario = document.getElementById("usuario").value;
 		datos.password = document.getElementById("password").value;
 
-		// fetch("/login", {
-		// 		headers: {
-		// 			'Accept': 'application/json',
-		// 			'Content-Type': 'application/json'
-		// 		},
-		// 		method: "POST",
-		// 		body: JSON.stringify(datos)
-		// })
+		fetch("/login", {
+				headers: {
+					'Accept': 'application/json',
+					'Content-Type': 'application/json'
+				},
+				method: "POST",
+				body: JSON.stringify(datos)
+		})
     
     console.log(datos);
 		document.getElementById("usuario").value = "";

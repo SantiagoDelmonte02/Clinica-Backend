@@ -1,16 +1,18 @@
 package com.dh.clinica.model.repository;
 
 
-import com.dh.clinica.model.entities.AppUser;
+import com.dh.clinica.model.entities.User;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 
 @Repository
-@Transactional(readOnly = true)
-public interface UserRepository extends JpaRepository<AppUser, Integer> {
+public interface UserRepository extends JpaRepository<User, Integer> {
 
-    AppUser findByUsername(String username);
+    @Query("from User u where u.name = :name")
+    Optional<User> getUserByName(@Param("name") String name);
 }
