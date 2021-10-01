@@ -21,18 +21,28 @@ class Turnos extends Component {
 
 	componentDidMount() {
 		this.cargarTurnos();
-		// this.formateaHorarios(this.state.arrTurnos);
 	}
 
-	// formateaHorarios(array) {
-	// 	for (let i = 0; i < array.length; i++) {
-	// 		console.log("Fecha de turno id: " + i);
-	// 		console.log(array.fechaTurno.toLocaleString());
-	// 	}
-	// 	array.forEach(turno => turno.fechaTurno.toLocaleString());
-	// 	let hoy = new Date();
-	// 	console.log(hoy.toLocaleString());
-	// }
+	eliminarTurno = (evt) => {
+    if(window.confirm("Seguro que desea eliminar el turno con id: " + evt.target.id + "?")) {
+      fetch("/turnos/" + evt.target.id, {
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        method: "DELETE"
+      })
+      alert("Paciente eliminado!");
+      this.cargarTurnos();
+    } else {
+      alert("Operacion cancelada!")
+    }
+  }
+
+	formatDate(date) {
+		let fecha = new Date(date);
+		return fecha.toLocaleString("es-AR");
+	}
 
 	render() {
 		return (
@@ -45,6 +55,7 @@ class Turnos extends Component {
 							<th scope="col">Paciente</th>
 							<th scope="col">Odontologo</th>
 							<th scope="col">Fecha y Hora</th>
+							<th scope="col">Accion</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -54,7 +65,8 @@ class Turnos extends Component {
 									<td>{turno.id}</td>
 									<td>{turno.paciente.nombre} {turno.paciente.apellido}</td>
 									<td>{turno.odontologo.nombre} {turno.odontologo.apellido}</td>
-									<td>{turno.fechaTurno}</td>
+									<td>{this.formatDate(turno.fechaTurno)}</td>
+									<td><button id={turno.id} class="btn btn-danger" onClick={this.eliminarTurno}>Eliminar</button></td>
 								</tr>
 							)
 						})}

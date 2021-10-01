@@ -13,6 +13,9 @@ class Administracion extends Component {
                 <hr/>
                 <RegistrarPaciente />
                 <hr/>
+                <br/>
+                <br/>
+                <br/>             
             </div>
         );
     }

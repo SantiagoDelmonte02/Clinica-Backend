@@ -1,7 +1,10 @@
-package com.dh.clinica.service;
+package com.dh.clinica.service.auth;
 
 
 import com.dh.clinica.model.Roles;
+import com.dh.clinica.model.entities.AppUser;
+import com.dh.clinica.model.repository.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
@@ -17,18 +20,16 @@ import java.util.Set;
 @Service
 public class UserService implements UserDetailsService {
 
+    @Autowired
+    private final UserRepository userRepository;
+
+    @Autowired
+    public UserService(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
+
     @Override
-    public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
-
-        Set<GrantedAuthority> autorizaciones = new HashSet<>();
-        //Role rol = new Role("USER", null);
-        GrantedAuthority autorizacionUSER = new SimpleGrantedAuthority("ROLE_USER");
-        GrantedAuthority autorizacionADMIN = new SimpleGrantedAuthority("ROLE_ADMIN");
-        autorizaciones.add(autorizacionUSER);
-        autorizaciones.add(autorizacionADMIN);
-
-        User user = new  User("admin","{noop}admin",true,true,true,true,autorizaciones);
-
-        return user;
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        return userRepository.findByUsername(username);
     }
 }

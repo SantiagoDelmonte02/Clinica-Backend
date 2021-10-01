@@ -15,7 +15,7 @@ public class Odontologo {
     @Id
     @SequenceGenerator(name = "odontologo_sequence", sequenceName = "odontologo_sequence", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "odontologo_sequence")
-    @Getter @Setter
+    @Getter
     private Integer id;
     @Getter @Setter
     private String nombre;

@@ -50,8 +50,6 @@ public class OdontologoController {
             response = ResponseEntity.status(HttpStatus.NOT_FOUND).build();
             logger.error("Hubo un error en la actualizacion del odontologo.");
         }
-
-
         return response;
     }
 
