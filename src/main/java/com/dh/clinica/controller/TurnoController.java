@@ -50,9 +50,10 @@ public class TurnoController {
     @DeleteMapping("/{id}")
     public ResponseEntity<String> eliminar(@PathVariable Integer id) {
         ResponseEntity<String> response;
-        if (turnoService.buscar(id).isPresent()) { // Esta validacion no esta en el enunciado del ejericio, pero se las dejo para que la tengan.
+        if (turnoService.buscar(id).isPresent()) {
             turnoService.eliminar(id);
             response = ResponseEntity.status(HttpStatus.NO_CONTENT).body("Eliminado");
+            logger.debug("Eliminando turno con id: " + id);
         } else {
             response = ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
