@@ -95,6 +95,11 @@ class ConsultaPacientes extends Component {
     this.cargarDomicilios();
   }
 
+  formatDate(date) {
+		let fecha = new Date(date);
+		return fecha.toLocaleString("es-AR");
+	}
+
   render() {
 
     return (
@@ -125,7 +130,7 @@ class ConsultaPacientes extends Component {
                     <td>{paciente.apellido}</td>
                     <td>{paciente.dni}</td>
                     <td>{paciente.domicilio.id}</td>
-                    <td>{paciente.fechaIngreso}</td>
+                    <td>{this.formatDate(paciente.fechaIngreso)}</td>
                     <td style={{width: "25%"}}>
                       <button id={paciente.id} class="btn btn-danger" onClick={this.eliminarPaciente}>Eliminar</button> 
                       <button id={paciente.id} class="btn btn-info" onClick={this.mostrarEdicionPaciente}>Editar</button>

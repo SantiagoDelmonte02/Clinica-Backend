@@ -1,5 +1,6 @@
 package com.dh.clinica.controller;
 
+import com.dh.clinica.model.entities.Odontologo;
 import com.dh.clinica.model.entities.Paciente;
 import com.dh.clinica.service.PacienteService;
 import org.apache.log4j.LogManager;
@@ -33,12 +34,19 @@ public class PacienteController {
         return ResponseEntity.ok(paciente);
     }
 
-    @PutMapping()
-    public ResponseEntity<Paciente> actualizar(@RequestBody Paciente paciente) {
+    @PutMapping("/{id}")
+    public ResponseEntity<Paciente> actualizar(@PathVariable Integer id, @RequestBody Paciente paciente) {
         ResponseEntity<Paciente> response = null;
         logger.debug("Actualizando datos de paciente...");
-        if (paciente.getId() != null && pacienteService.buscar(paciente.getId()).isPresent()) {
-            response = ResponseEntity.ok(pacienteService.actualizar(paciente));
+        Paciente pacienteViejo = pacienteService.buscar(id).orElse(null);
+        logger.debug(pacienteViejo);
+        if (pacienteService.buscar(paciente.getId()).isPresent()) {
+            pacienteViejo.setNombre(paciente.getNombre());
+            pacienteViejo.setApellido(paciente.getApellido());
+            pacienteViejo.setDni(paciente.getDni());
+            pacienteViejo.setFechaIngreso(paciente.getFechaIngreso());
+            pacienteViejo.setDomicilio(paciente.getDomicilio());
+            response = ResponseEntity.ok(pacienteService.actualizar(pacienteViejo));
             logger.debug("Los datos han sido actualizados!");
         } else {
             response = ResponseEntity.status(HttpStatus.NOT_FOUND).build();

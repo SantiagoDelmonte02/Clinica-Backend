@@ -12,6 +12,9 @@ function ConsultasGenerales() {
 				<hr/>
 				<ConsultaPacientes />
 				<hr/>
+				<br/>
+        <br/>
+        <br/> 
 		</div>
 	)
 }

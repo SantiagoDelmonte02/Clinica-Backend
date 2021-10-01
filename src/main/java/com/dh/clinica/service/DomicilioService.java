@@ -1,7 +1,6 @@
 package com.dh.clinica.service;
 
 import com.dh.clinica.model.entities.Domicilio;
-import com.dh.clinica.model.entities.Paciente;
 import com.dh.clinica.model.repository.DomicilioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,16 +18,16 @@ public class DomicilioService {
         this.domicilioRepository = domicilioRepository;
     }
 
-    public Domicilio guardar(Domicilio d){
-        domicilioRepository.save(d);
-        return d;
-    }
+    public Domicilio guardar(Domicilio d){ return domicilioRepository.save(d); }
+
     public Optional<Domicilio> buscar(Integer id){
         return Optional.of(domicilioRepository.getById(id));
     }
+
     public List<Domicilio> buscarTodos(){
         return domicilioRepository.findAll();
     }
+
     public void eliminar(Integer id){
         domicilioRepository.deleteById(id);
     }

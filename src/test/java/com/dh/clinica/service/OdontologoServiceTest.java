@@ -1,6 +1,8 @@
 package com.dh.clinica.service;
 
 import com.dh.clinica.model.entities.Odontologo;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import org.junit.Assert;
 import org.junit.FixMethodOrder;
 import org.junit.jupiter.api.Test;
@@ -17,6 +19,8 @@ import java.util.List;
 @SpringBootTest
 class OdontologoServiceTest {
 
+    private static final Logger logger = LogManager.getLogger(OdontologoServiceTest.class);
+
     @Autowired
     private OdontologoService odontologoService;
 
@@ -24,8 +28,8 @@ class OdontologoServiceTest {
     void cargarOdontologo() {
         Odontologo odontologo1 = odontologoService.registrarOdontologo(new Odontologo("Jorge", "Smith", 12367884));
         Odontologo odontologo2 = odontologoService.registrarOdontologo(new Odontologo("Juan", "Ramirez", 348971960));
-        System.out.println(odontologo1);
-        System.out.println(odontologo2);
+        logger.info(odontologo1);
+        logger.info(odontologo2);
         Assert.assertTrue(odontologo1.getId() != null);
         Assert.assertTrue(odontologo2.getId() != null);
     }
@@ -33,14 +37,14 @@ class OdontologoServiceTest {
     @Test
     void buscarOdontologoPorId() {
         Odontologo odontologo = odontologoService.registrarOdontologo(new Odontologo("Tony", "Stark", 5542342));
-        System.out.println(odontologo);
+        logger.info(odontologo);
         Assert.assertTrue(odontologoService.buscar(odontologo.getId()).isPresent());
     }
 
     @Test
     void buscarTodosLosOdontologos() {
         List<Odontologo> odontologos = odontologoService.buscarTodos();
-        System.out.println(odontologos);
+        logger.info(odontologos);
         Assert.assertFalse(odontologos.isEmpty());
         Assert.assertTrue(odontologos.size() == 4);
     }
@@ -50,9 +54,9 @@ class OdontologoServiceTest {
         Odontologo odontologo = odontologoService.registrarOdontologo(new Odontologo("Clint", "Barton", 5542342));
         if (odontologoService.buscar(odontologo.getId()).isPresent()) {
             odontologoService.eliminar(odontologo.getId());
-            System.out.println("Odontologo eliminado correctamente. Con id: " + odontologo.getId());
+            logger.debug("Odontologo eliminado correctamente. Con id: " + odontologo.getId());
         } else {
-            System.out.println("No hay odontologo con ese id");
+            logger.error("No hay odontologo con ese id");
         }
         Assert.assertFalse(odontologoService.buscar(odontologo.getId()).isPresent());
     }
@@ -60,11 +64,11 @@ class OdontologoServiceTest {
     @Test
     void actualizarOdontologo() {
         Odontologo odontologo = odontologoService.registrarOdontologo(new Odontologo("Steve", "Rogers", 3434343));
-        System.out.println(odontologo);
+        logger.info(odontologo);
         odontologo.setNombre("Captain");
         odontologo.setApellido("America");
         odontologoService.actualizar(odontologo);
-        System.out.println(odontologo);
+        logger.info(odontologo);
         Assert.assertTrue(odontologo.getNombre().equals("Captain"));
         Assert.assertTrue(odontologo.getApellido().equals("America"));
     }

@@ -69,6 +69,7 @@ class RegistrarTurno extends Component {
     turno.odontologo = odontologo;
     turno.fechaTurno = document.getElementById("fechaTurno").value;
 
+
 		fetch("/turnos", {
 			headers: {
 				'Accept': 'application/json',

@@ -7,17 +7,13 @@ class Navbar extends Component {
       <div>
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
           <div class="container-fluid">
-          <Link className="navbar-brand" to="/">Inicio</Link>
             <div class="collapse navbar-collapse" id="navbarNav">
-              <ul class="navbar-nav">
-                <li className="nav-item">
-                    <Link className="nav-link" to="/administracion">Admin</Link>
-                </li>
-                <li className="nav-item">
-                    <Link className="nav-link" to="/consultas">Consultas</Link>
-                </li>
+              <ul class="navbar-nav">                      
                 <li className="nav-item">
                     <Link className="nav-link" to="/turnos">Turnos</Link>
+                </li>
+                <li className="nav-item">
+                  <Link to="/login?logout"><button style={{position: "absolute", right: "1%"}} onClick={this.props.onLogout} class="btn btn-danger">Logout</button></Link>
                 </li>
               </ul>
             </div>
